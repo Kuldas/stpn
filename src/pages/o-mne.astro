@@ -1,22 +1,31 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const pageTitle = "O mně";
+
+const identity = {
+    jmeno: "Štěpán",
+    zeme: "Česku",
+    povolani: "frontend kodér",
+    zaliby: ["videohry", "fotbal", "kamarádi"],
+};
+
+const skills = ["HTML", "CSS", "Tailwind", "AlpineJS", "Astro", "Statamic"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
+<BaseLayout pageTitle={pageTitle}>
+    <h2>Ahoj, jmenuji se {identity.jmeno} a jsem {identity.povolani}.</h2>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<a href="/">Home</a>
-		<a href="/o-mne/">O mně</a>
-		<a href="/blog/">Blog</a>
-		<h1>O mně</h1>
-        <h2>... a mém zkoušení Astro.build</h2>
+    <p>Mezi mé záliby patří {identity.zaliby[0]} a {identity.zaliby[1]}.</p>
+    <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
 
-        <p>chci si vytvořit portfólio a jako základ použít Astro.build.</p>
-	</body>
-</html>
+    {happy && <p>Učím se pracovat s Astro!</p>}
+
+    {finished && <p>Vypadá to, že mám hotovo!</p>}
+    {goal === 3 ? <p>Chci to stihnout během 3 dnů.</p> : <p>Kecám, klidně ať to trvá měsíce.</p>}
+</BaseLayout>
