@@ -1,8 +1,14 @@
 ---
+import navigation from "../data/navigation.json";
 ---
-<div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/o-mne/">O mně</a>
-    <a href="/blog/">Blog</a>
-    <a href="/tags/">Tagy</a>
+<div class="hidden sm:block">
+    <nav>
+        <ul class="flex gap-4 text-sm text-white">
+        {
+            navigation.map(({ name, path }) => (
+                <li><a href={ path }>{ name }</a></li>
+            ))
+        }
+        </ul>
+    </nav>
 </div>

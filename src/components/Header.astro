@@ -2,12 +2,13 @@
 import Hamburger from "../components/Hamburger.astro";
 import Navigation from "../components/Navigation.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import Logo from "./Logo.astro";
 ---
 
-<header>
-    <nav>
+<header class="absolute top-0 w-full py-2">
+    <div class="fluid-container flex justify-between items-center">
+        <Logo />
         <Hamburger />
-        <ThemeToggle />
         <Navigation />
-    </nav>
+    </div>
 </header>
