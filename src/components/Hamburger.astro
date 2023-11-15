@@ -1,7 +1,37 @@
 ---
+import Logo from "./Logo.astro";
 ---
-<div class="hamburger">
-  <span class="line"></span>
-  <span class="line"></span>
-  <span class="line"></span>
+<div class="sm:hidden relative z-30 leading-none" x-data="{ mobNav: false }"
+x-trap.inert.noscroll="mobNav"
+@keyup.escape.stop.prevent="mobNav = false"
+x-cloak>
+<button
+  @click.prevent.stop="mobNav = !mobNav"
+  >
+  <svg x-show="!mobNav" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  </svg>
+</button>
+  <div
+        class="fixed inset-0 z-20 py-4 px-8 pb-12 flex flex-col bg-white"
+        x-show="mobNav"
+    >
+    <div class="w-full flex justify-between items-center relative">
+      <Logo />
+      <button
+        @click.prevent.stop="mobNav = !mobNav">
+        <svg x-cloak x-show="mobNav" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+      <nav>
+        <ul class="flex flex-col py-2 space-y-4 overflow-auto">
+          <li><a href="/">Home</a></li>
+          <li><a href="/o-mne/">O mně</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/tags/">Tagy</a></li>
+        </ul>
+      </nav>
+  </div> 
 </div>
