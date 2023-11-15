@@ -1,16 +1,18 @@
 ---
 import Social from "../components/Social.astro";
+
+const date = new Date();
+
+// Získání aktuálního roku
+const currentYear: number = date.getFullYear();
 ---
 
-<footer>
-    <Social platform="twitter" username="kuldaas" />
-    <Social platform="github" username="kuldas" />
+<footer class="w-full py-4 bg-neutral-200">
+    <div class="fluid-container flex justify-between items-center text-sm">
+        <span class="">Štěpán Kulík &copy; {currentYear}</span>
+        <div class="flex gap-4">
+            <Social platform="twitter" platformName="Twitter" username="kuldaas" />
+            <Social platform="github" platformName="GitHub" username="kuldas" />
+        </div>
+    </div>
 </footer>
-
-<style>
-    footer {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-  </style>

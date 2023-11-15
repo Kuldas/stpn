@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeading from "../components/PageHeading.astro";
 
 const pageTitle = "O mně";
 
@@ -17,15 +18,17 @@ const finished = false;
 const goal = 3;
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Ahoj, jmenuji se {identity.jmeno} a jsem {identity.povolani}.</h2>
-
-    <p>Mezi mé záliby patří {identity.zaliby[0]} a {identity.zaliby[1]}.</p>
-    <ul>
-            {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-
-    {happy && <p>Učím se pracovat s Astro!</p>}
-
-    {finished && <p>Vypadá to, že mám hotovo!</p>}
-    {goal === 3 ? <p>Chci to stihnout během 3 dnů.</p> : <p>Kecám, klidně ať to trvá měsíce.</p>}
+    <PageHeading pageTitle={pageTitle} />
+    <section class="fluid-container grid grid-cols-12 gap-8">
+        <article class="size-lg">
+            <h2>Ahoj, jmenuji se {identity.jmeno} a jsem {identity.povolani}.</h2>
+            <p>Mezi mé záliby patří {identity.zaliby[0]} a {identity.zaliby[1]}.</p>
+            <ul>
+                    {skills.map((skill) => <li class="skill">{skill}</li>)}
+            </ul>
+            {happy && <p>Učím se pracovat s Astro!</p>}
+            {finished && <p>Vypadá to, že mám hotovo!</p>}
+            {goal === 3 ? <p>Chci to stihnout během 3 dnů.</p> : <p>Kecám, klidně ať to trvá měsíce.</p>}
+        </article>
+    </section>
 </BaseLayout>

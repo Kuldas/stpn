@@ -2,19 +2,21 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
+import PageHeading from "../components/PageHeading.astro";
 
-const allPosts = await getCollection("posts");
-const pageTitle = "Blog";
+const allProjects = await getCollection("projects");
+const pageTitle = "Projekty";
 ---
 <BaseLayout pageTitle={pageTitle}>
+    <PageHeading pageTitle={pageTitle} />
 	<h2>... kde píšu co zrovna chci.</h2>
 
     <p>zatím nevím co bych tu psal. Tak tady nechám jen tento text.</p>
 
     <ul>
         {
-            allPosts.map((post) => (
-                <BlogPost url={`/posts/${post.slug}/`} title={post.data.title} />
+            allProjects.map((project) => (
+                <BlogPost url={`/projekty/${project.slug}/`} title={project.data.title} />
             ))
         }
     </ul>
