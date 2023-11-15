@@ -7,24 +7,74 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+                sans: ['Ubuntu', ...defaultTheme.fontFamily.sans]
+			},
+			// Set default transition durations and easing when using the transition utilities.
+			transitionDuration: {
+				DEFAULT: '300ms',
+			},
+			transitionTimingFunction: {
+				DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
 			},
 		},
 	},
 	plugins: [
 		plugin(function({ addBase }) {
 			addBase({
-			  ':root': {
-				// Fluid typography from 1 rem to 1.2 rem with fallback to 16px.
-				fontSize: '100%',
-				'font-size': 'clamp(1rem, 1.6vw, 1.2rem)',
-				// Safari resize fix.
-				minHeight: '0vw',
-			  },
-			  // Used to hide alpine elements before being rendered.
-			  '[x-cloak]': {
-				display: 'none !important'
-			  },
+				':root': {
+					// Fluid typography from 1 rem to 1.2 rem with fallback to 16px.
+					fontSize: '100%',
+					'font-size': 'clamp(1rem, 1.6vw, 1.2rem)',
+					// Safari resize fix.
+					minHeight: '0vw',
+			  	},
+			  	// Used to hide alpine elements before being rendered.
+			  	'[x-cloak]': {
+					display: 'none !important'
+				},
+				'@media (prefers-reduced-motion: no-preference)': {
+					'a': {
+					  transition: 'color .3s ease-in-out',
+					},
+				},
+				// Sizing utilities for sets in our bard (long form content).
+        		// On small devices they're full width.
+        		'.size-md, .size-lg, .size-xl': {
+					gridColumn: 'span 12 / span 12',
+		  		},
+				'@media screen(md)': {
+					// Sizing utilities for sets in our bard (long form content).
+					// On larger devices they go from medium to extra large.
+					// (E.g. an image wider then text in an article.)
+					'.size-md': {
+					  gridColumn: 'span 8 / span 8',
+					  gridColumnStart: '3',
+					},
+					'.size-lg': {
+					  gridColumn: 'span 8 / span 8',
+					  gridColumnStart: '3',
+					},
+					'.size-xl': {
+					  gridColumn: 'span 10 / span 10',
+					  gridColumnStart: '2',
+					},
+				},
+				'@media screen(lg)': {
+					// Sizing utilities for sets in our bard (long form content).
+					// On larger devices they go from medium to extra large.
+					'.size-md': {
+					  gridColumn: 'span 6 / span 6',
+					  gridColumnStart: '4',
+					},
+					'.size-lg': {
+					  gridColumn: 'span 8 / span 8',
+					  gridColumnStart: '3',
+					},
+					'.size-xl': {
+					  gridColumn: 'span 10 / span 10',
+					  gridColumnStart: '2',
+					},
+				  },
 			})
 		  }),
 		plugin(function({ addComponents, theme }) {
@@ -82,6 +132,15 @@ export default {
 				},
 			},
 			},
+			'.active': {
+				padding: theme('spacing.1'),
+				color: theme('colors.purple.200'),
+				borderBottom: theme('border.bottom.1'),
+				textDecorationStyle: 'wavy',
+				textDecorationLine: 'underline',
+				textUnderlineOffset: '4px',
+				textDecorationColor: theme('colors.purple.400')
+			}
 		}
 		addComponents(components)
 		}),

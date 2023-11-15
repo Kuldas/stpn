@@ -5,14 +5,14 @@
   },
   {
     "name": "O mně",
-    "path": "/o-mne/"
+    "path": "/o-mne"
   },
   {
-    "name": "Blog",
-    "path": "/blog/"
+    "name": "Projekty",
+    "path": "/projekty"
   },
   {
-    "name": "Tags",
-    "path": "/tags/"
+    "name": "Kontakt",
+    "path": "/kontakt"
   }
 ]

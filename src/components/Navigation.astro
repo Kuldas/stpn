@@ -1,14 +1,14 @@
 ---
-import navigation from "../data/navigation.json";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
 ---
 <div class="hidden sm:block">
     <nav>
-        <ul class="flex gap-4 text-sm text-white">
-        {
-            navigation.map(({ name, path }) => (
-                <li><a href={ path }>{ name }</a></li>
-            ))
-        }
+        <ul class="flex gap-8 text-sm text-white font-bold">
+            <li><a class={currentPath === "" ? "active" : "p-1 hover:text-purple-200"} href="/">Home</a></li>
+            <li><a class={currentPath === "o-mne" ? "active" : "p-1 hover:text-purple-200"} href="/o-mne">O mně</a></li>
+            <li><a class={currentPath === "projekty" ? "active" : "p-1 hover:text-purple-200"} href="/projekty">Portfolio</a></li>
+            <li><a class={currentPath === "kontakt" ? "active" : "p-1 hover:text-purple-200"} href="/kontakt">Kontakt</a></li>
         </ul>
     </nav>
 </div>
