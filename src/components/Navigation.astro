@@ -12,7 +12,7 @@ import { NavigationLinks } from '../config'
                         class={
                         (item.href.length > 0 && Astro.url.toString().includes(item.href)
                             ? 'active '
-                            : undefined) +
+                            : '' ) +
                         'p-1 text-white hover:text-purple-200'
                         }
                         aria-current={
