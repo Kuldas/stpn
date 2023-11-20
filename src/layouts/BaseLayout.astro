@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SkipToContent from '../components/SkipToContent.astro';
 import '../styles/site.css'
 const { pageTitle } = Astro.props;
 ---
@@ -16,8 +17,9 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
+    <SkipToContent />
     <Header />
-    <main class="outer-grid !pt-0">
+    <main id="content" class="outer-grid !pt-0">
       <slot />
    </main>
     <Footer />
