@@ -9,15 +9,19 @@ const pageTitle = "Projekty";
 ---
 <BaseLayout pageTitle={pageTitle}>
     <PageHeading pageTitle={pageTitle} />
-	<h2>... kde píšu co zrovna chci.</h2>
+    <section class="fluid-container grid grid-cols-12 gap-8">
+        <article class="prose size-lg">
+            <h2>... kde píšu co zrovna chci.</h2>
 
-    <p>zatím nevím co bych tu psal. Tak tady nechám jen tento text.</p>
+            <p>zatím nevím co bych tu psal. Tak tady nechám jen tento text.</p>
 
-    <ul>
-        {
-            allProjects.map((project) => (
-                <BlogPost url={`/projekty/${project.slug}/`} title={project.data.title} />
-            ))
-        }
-    </ul>
+            <ul class="not-prose">
+                {
+                    allProjects.map((project) => (
+                        <BlogPost url={`/projekty/${project.slug}/`} title={project.data.title} />
+                    ))
+                }
+            </ul>
+        </article>
+    </section>
 </BaseLayout>
