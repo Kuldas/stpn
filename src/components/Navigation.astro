@@ -3,7 +3,7 @@ import { NavigationLinks } from '../config'
 ---
 <div class="hidden sm:block">
     <nav>
-        <ul class="flex gap-8 text-sm text-white font-bold">
+        <ul class="flex gap-8 text-sm text-shark font-bold">
             {
                 NavigationLinks.map((item) => (
                 <li>
@@ -13,7 +13,7 @@ import { NavigationLinks } from '../config'
                         (item.href.length > 0 && Astro.url.toString().includes(item.href)
                             ? 'active '
                             : '' ) +
-                        'p-1 text-white hover:text-purple-200'
+                        'p-1 hover:text-shark-700'
                         }
                         aria-current={
                         item.href.length > 0 && Astro.url.toString().includes(item.href)
