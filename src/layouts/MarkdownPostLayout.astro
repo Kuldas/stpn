@@ -1,20 +1,26 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import PageHeading from "../components/PageHeading.astro";
 
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-    <p>Published on: {frontmatter.pubDate.toString().slice(0,10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt}>
-    <div class="tags">
-        {frontmatter.tags.map((tag) => (
-          <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-        ))}
-    </div>
-    <hr>
-    <slot />
+  <PageHeading pageTitle={frontmatter.title} />
+  <section class="fluid-container grid grid-cols-12 gap-8">
+    <article class="prose size-lg">
+      <p>Published on: {frontmatter.pubDate.toString().slice(0,10)}</p>
+      <p><em>{frontmatter.description}</em></p>
+      <p>Written by {frontmatter.author}</p>
+      <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt}>
+      <div class="tags">
+          {frontmatter.tags.map((tag) => (
+            <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+          ))}
+      </div>
+      <hr>
+      <slot />
+    </article>
+  </section>
 </BaseLayout>
 
 <style>
