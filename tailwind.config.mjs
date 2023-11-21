@@ -47,6 +47,14 @@ export default {
 				},
 								
 			},
+			typography: (theme) => ({
+				DEFAULT: {
+				  css: {
+					color: theme('colors.shark.950'),
+					'--tw-prose-bold': theme('colors.shark.950'),
+				  },
+				},
+			}),
 		},
 	},
 	plugins: [
@@ -166,15 +174,16 @@ export default {
 			},
 			'.active': {
 				padding: theme('spacing.1'),
-				color: theme('colors.purple.200'),
+				color: theme('colors.shark.700'),
 				borderBottom: theme('border.bottom.1'),
 				textDecorationStyle: 'wavy',
 				textDecorationLine: 'underline',
 				textUnderlineOffset: '4px',
-				textDecorationColor: theme('colors.purple.400')
+				textDecorationColor: theme('colors.loca.600')
 			}
 		}
 		addComponents(components)
 		}),
 	],
 }
+
