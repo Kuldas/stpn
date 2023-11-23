@@ -15,6 +15,16 @@ const projectsCollection = defineCollection({
     })
 });
 
+const glossaryCollection = defineCollection({
+    type: "data",
+    schema: z.object({
+        name: z.string(),
+        description: z.string(),
+        link: z.string().url(),
+    })
+});
+
 export const collections = {
     projects: projectsCollection,
+    glossary: glossaryCollection,
 };
