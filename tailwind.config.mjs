@@ -79,7 +79,7 @@ export default {
 				},
 				// Sizing utilities for sets in our bard (long form content).
         		// On small devices they're full width.
-        		'.size-md, .size-lg, .size-xl': {
+        		'.size-md, .size-lg, .size-xl, .size-2xl': {
 					gridColumn: 'span 12 / span 12',
 		  		},
 				'@media screen(md)': {
@@ -87,33 +87,39 @@ export default {
 					// On larger devices they go from medium to extra large.
 					// (E.g. an image wider then text in an article.)
 					'.size-md': {
-					  gridColumn: 'span 8 / span 8',
-					  gridColumnStart: '3',
+						gridColumn: 'span 8 / span 8',
+						gridColumnStart: '3',
 					},
 					'.size-lg': {
-					  gridColumn: 'span 8 / span 8',
-					  gridColumnStart: '3',
+						gridColumn: 'span 8 / span 8',
+						gridColumnStart: '3',
 					},
 					'.size-xl': {
-					  gridColumn: 'span 10 / span 10',
-					  gridColumnStart: '2',
+						gridColumn: 'span 10 / span 10',
+						gridColumnStart: '2',
+					},
+					'.size-2xl': {
+						gridColumn: 'span 12 / span 12',
 					},
 				},
 				'@media screen(lg)': {
 					// Sizing utilities for sets in our bard (long form content).
 					// On larger devices they go from medium to extra large.
 					'.size-md': {
-					  gridColumn: 'span 6 / span 6',
-					  gridColumnStart: '4',
+						gridColumn: 'span 6 / span 6',
+						gridColumnStart: '4',
 					},
 					'.size-lg': {
-					  gridColumn: 'span 8 / span 8',
-					  gridColumnStart: '3',
+						gridColumn: 'span 8 / span 8',
+						gridColumnStart: '3',
 					},
 					'.size-xl': {
-					  gridColumn: 'span 10 / span 10',
-					  gridColumnStart: '2',
+						gridColumn: 'span 10 / span 10',
+						gridColumnStart: '2',
 					},
+					'.size-2xl': {
+						gridColumn: 'span 12 / span 12',
+					}
 				  },
 			})
 		  }),
