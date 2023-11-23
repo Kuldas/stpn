@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectEntry from "../components/ProjetctEntry.astro";
+import PageHeading from "../components/PageHeading.astro";
+
+const completeGlossary = await getCollection("glossary");
+const pageTitle = "Slovník pojmů";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <PageHeading pageTitle={pageTitle} />
+    <section class="fluid-container grid grid-cols-12 gap-8">
+        <article class="prose size-lg">
+            <p>Slovník, kde shromažďuji běžně používané pojmy technologií, jazyků apod., které běžně využívám v praxi. Můžete se tak podívat co přesně myslím, jak to funguje a co můžete očekávat.</p>
+            <p class="text-xs">Našli jste chybu nebo chcete doplnit nějaké informace či pojmy? Napište mi na jsem@stepankulik.cz</p>
+            <h2>Seznam všech pojmů</h2>
+            <ul class="not-prose">
+                {
+                    completeGlossary.map((glossary) => (
+                        <ProjectEntry url={`/slovnik/${glossary.id}/`} title={glossary.data.name} />
+                    ))
+                }
+            </ul>
+        </article>
+    </section>
+</BaseLayout>
