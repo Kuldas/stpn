@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon";
+import { getCollection } from 'astro:content';
 
 const pageTitle = "Hlavní stránka";
+const glossaryItem = await getCollection('glossary', ({ id }) => 
+	['statamic', 'tailwind', 'laravel', 'astro', 'typescript', 'alpinejs'].includes(id)
+);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -10,7 +14,7 @@ const pageTitle = "Hlavní stránka";
 		<div class="fluid-container grid md:grid-cols-12 gap-8">
 			<article class="md:col-span-8 md:col-start-3 flex flex-col sm:flex-row justify-center items-center gap-12 text-shark z-10">
 				<div class="drop-shadow-xl">
-					<div class="blob w-full aspect-[1/1]">
+					<div class="blob w-40 h-40">
 						<img class="w-full h-full object-cover" src="visuals/stepan-kulik-avatar.jpg">
 					</div>
 					<svg width="0" height="0">
@@ -21,7 +25,7 @@ const pageTitle = "Hlavní stránka";
 				</div>
 				<div class="flex flex-col tracking-wide">
 					<h1 class="text-4xl text-loca font-bold">Ahoj 👋</h1>
-					<p class="pt-2 pb-8">jmenuji se <strong>Štěpán Kulík</strong> a jsem frontend kodér na volné noze připravený podat pomocnou ruku Vašemu projektu.</p>
+					<p class="pt-2 pb-8">jmenuji se <strong>Štěpán Kulík</strong> a jsem frontend vývojář na volné noze připravený podat pomocnou ruku Vašemu projektu.</p>
 					<figure class="flex flex-col sm:flex-row gap-4 sm:items-center">
 						<figcaption class="text-sm underline underline-offset-4 decoration-wavy decoration-loca">Kontaktujte mě skrze:</figcaption>
 						<ul class="flex gap-4">
@@ -52,46 +56,47 @@ const pageTitle = "Hlavní stránka";
 		</div>
 	</section>
 	<section class="fluid-container grid md:grid-cols-12 gap-8">
-		<h2 class="md:size-2xl py-8 text-4xl text-loca font-bold italic not-prose">Rychlý, moderní a funkční web</h2>
+		<h2 class="md:size-2xl text-4xl text-loca font-bold">Rychlý, moderní a funkční web</h2>
 		<article class="sm:col-span-7 prose">
 			<p>Vytvářím rychlé a moderní webové stránky. Zákládám si na <strong>jednoduchosti</strong>, <strong>uživatelské přívětivosti</strong> a <strong>funkčnosti</strong>.</p>
-			<p>Rád používám moderní technologie a kladu důraz na přístupnost a sémantiku.</p>
+			<p>Pro tvorbu využívám moderní technologie a kladu důraz na přístupnost a sémantiku.</p>
 			<p>Dodržuji stanovené termíny a vždy dodám práci na 100%.</p>
 		</article>
 		<aside class="sm:col-span-5 ">
-			<ul class="grid grid-cols-3 gap-8 place-items-center h-full group">
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-						<Icon name="statamic-icon" class="fill-loca w-12 aspect-square" />
-						Statamic
-					</a>
-				</li>
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-					<Icon name="astro-icon" class="fill-loca w-12 aspect-square" />
-					Astro</a>
-				</li>
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-					<Icon name="laravel-icon" class="fill-loca w-12 aspect-square" />
-					Laravel</a>
-				</li>
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-					<Icon name="alpinejs-icon" class="fill-loca w-12 aspect-square" />
-					Alpinejs</a>
-				</li>
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-					<Icon name="tailwind-icon" class="fill-loca w-12 aspect-square" />
-					Tailwind</a>
-				</li>
-				<li class="w-full h-full">
-					<a class="flex flex-col items-center gap-2 grayscale motion-safe:transition hover:grayscale-0" href="/slovnik/">
-					<Icon name="typescript-icon" class="fill-loca w-12 aspect-square" />
-					Typescript</a>
-				</li>
-			</ul>
+			<ul class="grid grid-cols-3 gap-8 place-items-center">
+                {
+                    glossaryItem.map((item) => (
+                        <li>
+							<a class="flex flex-col items-center text-sm gap-2 grayscale motion-safe:transition hover:grayscale-0" href={`/slovnik/${item.id}`}>
+								<Icon name={`${item.id}-icon`} class="fill-loca w-12 aspect-square" />
+								{item.data.name}
+							</a>
+						</li>
+                    ))
+                }
+            </ul>
+		</aside>
+	</section>
+	<section class="fluid-container grid md:grid-cols-12 gap-8">
+		<h2 class="md:size-2xl text-4xl text-loca font-bold">Co všechno umím</h2>
+		<article class="sm:col-span-7 prose">
+			<p>Vytvářím rychlé a moderní webové stránky. Zákládám si na <strong>jednoduchosti</strong>, <strong>uživatelské přívětivosti</strong> a <strong>funkčnosti</strong>.</p>
+			<p>Pro tvorbu využívám moderní technologie a kladu důraz na přístupnost a sémantiku.</p>
+			<p>Dodržuji stanovené termíny a vždy dodám práci na 100%.</p>
+		</article>
+		<aside class="sm:col-span-5 ">
+			<ul class="grid grid-cols-3 gap-8 place-items-center">
+                {
+                    glossaryItem.map((item) => (
+                        <li>
+							<a class="flex flex-col items-center text-sm gap-2 grayscale motion-safe:transition hover:grayscale-0" href={`/slovnik/${item.id}`}>
+								<Icon name={`${item.id}-icon`} class="fill-loca w-12 aspect-square" />
+								{item.data.name}
+							</a>
+						</li>
+                    ))
+                }
+            </ul>
 		</aside>
 	</section>
 </BaseLayout>
